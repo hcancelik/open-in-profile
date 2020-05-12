@@ -7,8 +7,11 @@
 //
 
 import SwiftUI
+import ServiceManagement
 
 struct GeneralSettingsView: View {
+    let helperBundleName = "com.hcancelik.Open-In-Profile-Helper"
+    
     @State private var startOnStartUp: Bool = true
     
     @State private var chromePath: String = ""
@@ -28,7 +31,7 @@ struct GeneralSettingsView: View {
                 self.startOnStartUp
             },
                 set: {
-                    _ = setLaunchAtLogin(enabled: $0)
+                    SMLoginItemSetEnabled(self.helperBundleName as CFString, $0)
                     self.startOnStartUp = $0
             }
         )
@@ -269,7 +272,11 @@ struct GeneralSettingsView: View {
                     Text("Automatically start on launch")
                 }
                 .onAppear {
-                    self.startOnStartUp = willLaunchAtLogin()
+                    let foundHelper = NSWorkspace.shared.runningApplications.contains {
+                        $0.bundleIdentifier == self.helperBundleName
+                    }
+                    
+                    self.startOnStartUp = foundHelper
                 }
                 Spacer()
             }

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3640A401246B04E500251FEC /* HelperAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3640A400246B04E500251FEC /* HelperAppDelegate.swift */; };
+		3640A405246B04E700251FEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3640A404246B04E700251FEC /* Assets.xcassets */; };
+		3640A408246B04E700251FEC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3640A407246B04E700251FEC /* Preview Assets.xcassets */; };
+		3640A40B246B04E700251FEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3640A409246B04E700251FEC /* Main.storyboard */; };
+		3640A415246B09AC00251FEC /* Open In Profile Helper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3640A3FE246B04E500251FEC /* Open In Profile Helper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		36932E5124672B1E00B752F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36932E5024672B1E00B752F9 /* AppDelegate.swift */; };
 		36932E5324672B1E00B752F9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36932E5224672B1E00B752F9 /* ContentView.swift */; };
 		36932E5624672B1E00B752F9 /* Open_In_Profile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 36932E5424672B1E00B752F9 /* Open_In_Profile.xcdatamodeld */; };
@@ -17,14 +22,33 @@
 		36932E772467FF2E00B752F9 /* VisitedUrlRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36932E762467FF2E00B752F9 /* VisitedUrlRowView.swift */; };
 		36932E792467FF6500B752F9 /* NoLinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36932E782467FF6500B752F9 /* NoLinksView.swift */; };
 		36932E7B2468000900B752F9 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36932E7A2468000900B752F9 /* Helper.swift */; };
-		36932E7D2468002B00B752F9 /* LaunchAtLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36932E7C2468002B00B752F9 /* LaunchAtLoginHelper.swift */; };
 		36932E802468013E00B752F9 /* VisitedUrl+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36932E7E2468013E00B752F9 /* VisitedUrl+CoreDataClass.swift */; };
 		36932E812468013E00B752F9 /* VisitedUrl+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36932E7F2468013E00B752F9 /* VisitedUrl+CoreDataProperties.swift */; };
 		36932E842468258B00B752F9 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36932E832468258B00B752F9 /* GeneralSettingsView.swift */; };
 		36932E86246825F800B752F9 /* ResetSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36932E85246825F800B752F9 /* ResetSettingsView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3640A414246B099D00251FEC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				3640A415246B09AC00251FEC /* Open In Profile Helper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		3640A3FE246B04E500251FEC /* Open In Profile Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open In Profile Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3640A400246B04E500251FEC /* HelperAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperAppDelegate.swift; sourceTree = "<group>"; };
+		3640A404246B04E700251FEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3640A407246B04E700251FEC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3640A40A246B04E700251FEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3640A40C246B04E700251FEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3640A40D246B04E700251FEC /* Open_In_Profile_Helper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Open_In_Profile_Helper.entitlements; sourceTree = "<group>"; };
 		36932E4D24672B1E00B752F9 /* Open In Profile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open In Profile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36932E5024672B1E00B752F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36932E5224672B1E00B752F9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,7 +62,6 @@
 		36932E762467FF2E00B752F9 /* VisitedUrlRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitedUrlRowView.swift; sourceTree = "<group>"; };
 		36932E782467FF6500B752F9 /* NoLinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoLinksView.swift; sourceTree = "<group>"; };
 		36932E7A2468000900B752F9 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
-		36932E7C2468002B00B752F9 /* LaunchAtLoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginHelper.swift; sourceTree = "<group>"; };
 		36932E7E2468013E00B752F9 /* VisitedUrl+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisitedUrl+CoreDataClass.swift"; sourceTree = "<group>"; };
 		36932E7F2468013E00B752F9 /* VisitedUrl+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisitedUrl+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		36932E832468258B00B752F9 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
@@ -46,6 +69,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3640A3FB246B04E500251FEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		36932E4A24672B1E00B752F9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -56,10 +86,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3640A3FF246B04E500251FEC /* Open In Profile Helper */ = {
+			isa = PBXGroup;
+			children = (
+				3640A400246B04E500251FEC /* HelperAppDelegate.swift */,
+				3640A404246B04E700251FEC /* Assets.xcassets */,
+				3640A409246B04E700251FEC /* Main.storyboard */,
+				3640A40C246B04E700251FEC /* Info.plist */,
+				3640A40D246B04E700251FEC /* Open_In_Profile_Helper.entitlements */,
+				3640A406246B04E700251FEC /* Preview Content */,
+			);
+			path = "Open In Profile Helper";
+			sourceTree = "<group>";
+		};
+		3640A406246B04E700251FEC /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3640A407246B04E700251FEC /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		36932E4424672B1E00B752F9 = {
 			isa = PBXGroup;
 			children = (
 				36932E4F24672B1E00B752F9 /* Open In Profile */,
+				3640A3FF246B04E500251FEC /* Open In Profile Helper */,
 				36932E4E24672B1E00B752F9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				36932E4D24672B1E00B752F9 /* Open In Profile.app */,
+				3640A3FE246B04E500251FEC /* Open In Profile Helper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,7 +140,6 @@
 				36932E5F24672B1F00B752F9 /* Info.plist */,
 				36932E6024672B1F00B752F9 /* Open_In_Profile.entitlements */,
 				36932E5424672B1E00B752F9 /* Open_In_Profile.xcdatamodeld */,
-				36932E7C2468002B00B752F9 /* LaunchAtLoginHelper.swift */,
 				36932E5924672B1F00B752F9 /* Preview Content */,
 			);
 			path = "Open In Profile";
@@ -123,6 +175,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3640A3FD246B04E500251FEC /* Open In Profile Helper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3640A410246B04E700251FEC /* Build configuration list for PBXNativeTarget "Open In Profile Helper" */;
+			buildPhases = (
+				3640A3FA246B04E500251FEC /* Sources */,
+				3640A3FB246B04E500251FEC /* Frameworks */,
+				3640A3FC246B04E500251FEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Open In Profile Helper";
+			productName = "Open In Profile Helper";
+			productReference = 3640A3FE246B04E500251FEC /* Open In Profile Helper.app */;
+			productType = "com.apple.product-type.application";
+		};
 		36932E4C24672B1E00B752F9 /* Open In Profile */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36932E6324672B1F00B752F9 /* Build configuration list for PBXNativeTarget "Open In Profile" */;
@@ -130,6 +199,7 @@
 				36932E4924672B1E00B752F9 /* Sources */,
 				36932E4A24672B1E00B752F9 /* Frameworks */,
 				36932E4B24672B1E00B752F9 /* Resources */,
+				3640A414246B099D00251FEC /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -150,6 +220,9 @@
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "H. Can Celik";
 				TargetAttributes = {
+					3640A3FD246B04E500251FEC = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
 					36932E4C24672B1E00B752F9 = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -169,11 +242,22 @@
 			projectRoot = "";
 			targets = (
 				36932E4C24672B1E00B752F9 /* Open In Profile */,
+				3640A3FD246B04E500251FEC /* Open In Profile Helper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3640A3FC246B04E500251FEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3640A40B246B04E700251FEC /* Main.storyboard in Resources */,
+				3640A408246B04E700251FEC /* Preview Assets.xcassets in Resources */,
+				3640A405246B04E700251FEC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		36932E4B24672B1E00B752F9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -187,6 +271,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3640A3FA246B04E500251FEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3640A401246B04E500251FEC /* HelperAppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		36932E4924672B1E00B752F9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -200,7 +292,6 @@
 				36932E752467FEE500B752F9 /* SettingsView.swift in Sources */,
 				36932E5124672B1E00B752F9 /* AppDelegate.swift in Sources */,
 				36932E772467FF2E00B752F9 /* VisitedUrlRowView.swift in Sources */,
-				36932E7D2468002B00B752F9 /* LaunchAtLoginHelper.swift in Sources */,
 				36932E5624672B1E00B752F9 /* Open_In_Profile.xcdatamodeld in Sources */,
 				36932E792467FF6500B752F9 /* NoLinksView.swift in Sources */,
 			);
@@ -209,6 +300,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		3640A409246B04E700251FEC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3640A40A246B04E700251FEC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		36932E5C24672B1F00B752F9 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -220,6 +319,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3640A40E246B04E700251FEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Open In Profile Helper/Open_In_Profile_Helper.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Open In Profile Helper/Preview Content\"";
+				DEVELOPMENT_TEAM = 4JKN6R4HEF;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Open In Profile Helper/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hcancelik.Open-In-Profile-Helper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3640A40F246B04E700251FEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Open In Profile Helper/Open_In_Profile_Helper.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Open In Profile Helper/Preview Content\"";
+				DEVELOPMENT_TEAM = 4JKN6R4HEF;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Open In Profile Helper/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hcancelik.Open-In-Profile-Helper";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		36932E6124672B1F00B752F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -351,7 +498,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hcancelik.Open-In-Profile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -376,7 +523,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hcancelik.Open-In-Profile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -386,6 +533,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3640A410246B04E700251FEC /* Build configuration list for PBXNativeTarget "Open In Profile Helper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3640A40E246B04E700251FEC /* Debug */,
+				3640A40F246B04E700251FEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		36932E4824672B1E00B752F9 /* Build configuration list for PBXProject "Open In Profile" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
