@@ -39,4 +39,77 @@ class Helper {
     static func getBundleId() -> String {
         return Bundle.main.bundleIdentifier ?? "Unknown"
     }
+    
+    static func getBundleVersion() -> String {
+        return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+    }
+    
+    static func checkIfUpdateAvailable() -> Bool {
+        let currentVersion = Helper.getBundleVersion()
+        
+        if currentVersion != "" {
+            if let url = URL(string: "https://hikmetcancelik.com/open-in-profile/version.txt") {
+                do {
+                    var version = try String(contentsOf: url).trimmingCharacters(in: CharacterSet.newlines)
+                    
+                    if version.contains("Version:") {
+                        version = version.replacingOccurrences(of: "Version:", with: "")
+                        
+                        UserDefaults.standard.set(version, forKey: "LatestVersion")
+                        
+                        print(version)
+                        
+                        if version != Helper.getBundleVersion() {
+                            UserDefaults.standard.set(true, forKey: "UpdatesAvailable")
+                            
+                            return true
+                        }
+                    }
+                } catch {
+                    UserDefaults.standard.set(false, forKey: "UpdatesAvailable")
+                    
+                    return false
+                }
+            }
+        }
+        
+        UserDefaults.standard.set(false, forKey: "UpdatesAvailable")
+        
+        return false
+    }
+    
+    static func checkIfUserShouldAlertedForAvailableUpdate() -> Bool {
+        let currentVersion = Helper.getBundleVersion()
+        let latestVersion = UserDefaults.standard.string(forKey: "LatestVersion") ?? currentVersion
+        
+        if latestVersion != currentVersion {
+            let lastNotificationVersion = UserDefaults.standard.string(forKey: "LastNotifedVersion") ?? ""
+            
+            if lastNotificationVersion != latestVersion {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    static func markUpdateNotificationAsRead() -> Void {
+        let latestVersion = UserDefaults.standard.string(forKey: "LatestVersion")
+        
+        UserDefaults.standard.set(latestVersion, forKey: "LastNotifedVersion")
+    }
+    
+    static func goToWebPage(url: String = "https://hikmetcancelik.com/open-in-profile/") -> Void {
+        Helper.openLink(url: url)
+    }
+    
+    static func resetAllUserDefaults() -> Void {
+        let domain = Bundle.main.bundleIdentifier!
+        
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        
+        UserDefaults.standard.synchronize()
+        
+        print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+    }
 }

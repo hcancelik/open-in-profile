@@ -66,6 +66,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         Helper.setAsDefaultBrowser()
+        
+        let _ = Helper.checkIfUpdateAvailable()
     }
     
     func closePopover(_ sender: AnyObject?) {

@@ -14,6 +14,9 @@ struct ContentView: View {
     @FetchRequest(entity: VisitedUrl.entity(),
                   sortDescriptors: [NSSortDescriptor.init(key: "visitDate", ascending: false)]) var recentUrls: FetchedResults<VisitedUrl>
     
+    @State private var wantToQuitAlert: Bool = false
+    @State private var showAvailableUpdateAlert: Bool = false
+    
     let window = NSWindow(
         contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
         styleMask: [.titled, .closable],
@@ -44,6 +47,16 @@ struct ContentView: View {
                     .padding(.horizontal, 10)
                 }
             }
+            .alert(isPresented: self.$wantToQuitAlert) {
+                Alert(title: Text("Are you sure you want to quit?"),
+                      message: Text("If Open In Profile is your default browser and you click a link, it will reopen again."),
+                      primaryButton: .destructive(Text("Quit")) {
+                        self.terminate()
+                    },
+                      secondaryButton: .cancel() {
+                        self.wantToQuitAlert.toggle()
+                    })
+            }
             
             Spacer()
             
@@ -52,8 +65,9 @@ struct ContentView: View {
                     Button(action: {
                         self.openSettingMenu()
                     }) {
-                        Text("􀍟")
-                            .font(.headline)
+                        Image(nsImage: NSImage(named: NSImage.smartBadgeTemplateName)!)
+                            .resizable()
+                            .frame(width: 20, height: 20)
                     }
                     .buttonStyle(PlainButtonStyle())
                     
@@ -74,15 +88,30 @@ struct ContentView: View {
                     
                     Spacer()
                     
-                    Button(action: self.terminate) {
-                        Text("􀆨")
-                            .font(.headline)
+                    Button(action: {
+                        self.wantToQuitAlert.toggle()
+                    }) {
+                        Image(nsImage: NSImage(named: NSImage.stopProgressFreestandingTemplateName)!)
+                            .resizable()
+                            .frame(width: 18, height: 18)
                     }
                     .buttonStyle(PlainButtonStyle())
                 }
                 .padding(.vertical, 8)
                 .padding(.horizontal, 12)
                 .background(Color.gray.opacity(0.1))
+            }
+            .alert(isPresented: self.$showAvailableUpdateAlert) {
+                Helper.markUpdateNotificationAsRead()
+                
+                return Alert(title: Text("New version of Open In Profile is available."),
+                             message: Text("You can download the new version from the website."),
+                             primaryButton: .destructive(Text("Go To Website")) {
+                                Helper.goToWebPage()
+                    },
+                             secondaryButton: .cancel(Text("Close")) {
+                                self.showAvailableUpdateAlert.toggle()
+                    })
             }
         }
         .background(Color.white)
@@ -95,6 +124,8 @@ struct ContentView: View {
             self.window.contentView = NSHostingView(rootView: settingsView)
             self.window.isReleasedWhenClosed = false
             self.window.orderOut(self)
+            
+            self.showAvailableUpdateAlert = Helper.checkIfUserShouldAlertedForAvailableUpdate()
         }
     }
     

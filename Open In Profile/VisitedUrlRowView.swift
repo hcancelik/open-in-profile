@@ -28,8 +28,7 @@ struct VisitedUrlRowView: View {
                 
                 self.closePopover()
             }) {
-                Text("􀒠")
-                    .font(.headline)
+                Image(nsImage: NSImage(named: NSImage.followLinkFreestandingTemplateName)!)
             }
             .buttonStyle(BorderlessButtonStyle())
         }

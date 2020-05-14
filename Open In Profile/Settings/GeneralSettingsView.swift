@@ -38,7 +38,7 @@ struct GeneralSettingsView: View {
         
         return VStack {
             VStack {
-                HStack(alignment: .lastTextBaseline) {
+                HStack(alignment: .top) {
                     Text("Chrome App Location")
                         .fontWeight(.bold)
                         .padding(.bottom, 5)
@@ -46,7 +46,7 @@ struct GeneralSettingsView: View {
                     Button(action: {
                         self.showChromeAppInfoPopover.toggle()
                     }) {
-                        Text("􀅴")
+                        Image(nsImage: NSImage(named: NSImage.revealFreestandingTemplateName)!)
                     }
                     .buttonStyle(PlainButtonStyle())
                     .popover(isPresented: self.$showChromeAppInfoPopover) {
@@ -115,7 +115,7 @@ struct GeneralSettingsView: View {
             .padding(.bottom, 20)
             
             VStack {
-                HStack(alignment: .lastTextBaseline) {
+                HStack(alignment: .top) {
                     Text("Chrome Profile Directory")
                         .fontWeight(.bold)
                         .onAppear{
@@ -125,7 +125,7 @@ struct GeneralSettingsView: View {
                     Button(action: {
                         self.showChromeProfileInfoPopover.toggle()
                     }) {
-                        Text("􀅴")
+                        Image(nsImage: NSImage(named: NSImage.revealFreestandingTemplateName)!)
                     }
                     .buttonStyle(PlainButtonStyle())
                     .popover(isPresented: self.$showChromeProfileInfoPopover) {
@@ -216,7 +216,7 @@ struct GeneralSettingsView: View {
             .padding(.bottom, 20)
             
             VStack {
-                HStack(alignment: .lastTextBaseline) {
+                HStack(alignment: .top) {
                     Text("Open Blank Tab URL")
                         .fontWeight(.bold)
                         .onAppear{
@@ -288,11 +288,11 @@ struct GeneralSettingsView: View {
                 Button(action: {
                     Helper.setAsDefaultBrowser()
                 }) {
-                    Text("􀆪 Set As Default Browser")
+                    Text("Set As Default Browser")
                         .padding(.horizontal, 10)
                         .padding(.vertical, 8)
                 }
-                .buttonStyle(CustomButtonStyle(bgColor: Color("Green-500"), txtColor: .white))
+                .buttonStyle(CustomButtonStyle(bgColor: Color.blue, txtColor: .white))
             }
         }
         .padding()

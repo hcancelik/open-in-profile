@@ -26,6 +26,7 @@
 		36932E812468013E00B752F9 /* VisitedUrl+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36932E7F2468013E00B752F9 /* VisitedUrl+CoreDataProperties.swift */; };
 		36932E842468258B00B752F9 /* GeneralSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36932E832468258B00B752F9 /* GeneralSettingsView.swift */; };
 		36932E86246825F800B752F9 /* ResetSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36932E85246825F800B752F9 /* ResetSettingsView.swift */; };
+		36D9418B246C24C800A213BB /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9418A246C24C800A213BB /* AboutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +67,7 @@
 		36932E7F2468013E00B752F9 /* VisitedUrl+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisitedUrl+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		36932E832468258B00B752F9 /* GeneralSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsView.swift; sourceTree = "<group>"; };
 		36932E85246825F800B752F9 /* ResetSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetSettingsView.swift; sourceTree = "<group>"; };
+		36D9418A246C24C800A213BB /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				36932E742467FEE500B752F9 /* SettingsView.swift */,
 				36932E832468258B00B752F9 /* GeneralSettingsView.swift */,
 				36932E85246825F800B752F9 /* ResetSettingsView.swift */,
+				36D9418A246C24C800A213BB /* AboutView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				36932E5324672B1E00B752F9 /* ContentView.swift in Sources */,
 				36932E802468013E00B752F9 /* VisitedUrl+CoreDataClass.swift in Sources */,
 				36932E7B2468000900B752F9 /* Helper.swift in Sources */,
+				36D9418B246C24C800A213BB /* AboutView.swift in Sources */,
 				36932E842468258B00B752F9 /* GeneralSettingsView.swift in Sources */,
 				36932E86246825F800B752F9 /* ResetSettingsView.swift in Sources */,
 				36932E752467FEE500B752F9 /* SettingsView.swift in Sources */,
@@ -498,7 +502,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hcancelik.Open-In-Profile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -523,7 +527,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hcancelik.Open-In-Profile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

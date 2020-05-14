@@ -22,7 +22,7 @@ struct SettingsView: View {
             
             VStack {
                 Text("This feature is coming soon!")
-                .padding(20)
+                    .padding(20)
             }
             .tabItem {
                 Text("Rules")
@@ -34,6 +34,12 @@ struct SettingsView: View {
                 Text("Reset")
             }
             .tag(2)
+            
+            AboutView()
+            .tabItem {
+                Text("About")
+            }
+            .tag(3)
             
         }
         .padding(20)
