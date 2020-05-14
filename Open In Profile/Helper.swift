@@ -57,8 +57,6 @@ class Helper {
                         
                         UserDefaults.standard.set(version, forKey: "LatestVersion")
                         
-                        print(version)
-                        
                         if version != Helper.getBundleVersion() {
                             UserDefaults.standard.set(true, forKey: "UpdatesAvailable")
                             
