@@ -15,9 +15,13 @@ struct NoLinksView: View {
                 .resizable()
                 .scaledToFit()
                 .foregroundColor(Color.gray)
+            
             Text("You haven't opened any links yet.")
             .foregroundColor(Color.gray)
+            
+            Spacer()
         }
+        .background(Color.white)
     }
 }
 

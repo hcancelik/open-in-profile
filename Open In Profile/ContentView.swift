@@ -39,12 +39,14 @@ struct ContentView: View {
                     NoLinksView()
                 }
                 else {
-                    VStack() {
-                        ForEach(self.recentUrls, id: \.id) { url in
-                            VisitedUrlRowView(url: url)
+                    ScrollView {
+                        VStack() {
+                            ForEach(self.recentUrls, id: \.id) { url in
+                                VisitedUrlRowView(url: url)
+                            }
                         }
+                        .padding(.horizontal, 10)
                     }
-                    .padding(.horizontal, 10)
                 }
             }
             .alert(isPresented: self.$wantToQuitAlert) {
@@ -101,6 +103,7 @@ struct ContentView: View {
                 .padding(.horizontal, 12)
                 .background(Color.gray.opacity(0.1))
             }
+            .background(Color.black.opacity(0.4))
             .alert(isPresented: self.$showAvailableUpdateAlert) {
                 Helper.markUpdateNotificationAsRead()
                 
