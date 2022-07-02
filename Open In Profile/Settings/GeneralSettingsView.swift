@@ -46,7 +46,7 @@ struct GeneralSettingsView: View {
                     Button(action: {
                         self.showChromeAppInfoPopover.toggle()
                     }) {
-                        Image(nsImage: NSImage(named: NSImage.revealFreestandingTemplateName)!)
+                        Image(systemName: "info.circle")
                     }
                     .buttonStyle(PlainButtonStyle())
                     .popover(isPresented: self.$showChromeAppInfoPopover) {
@@ -116,7 +116,7 @@ struct GeneralSettingsView: View {
             
             VStack {
                 HStack(alignment: .top) {
-                    Text("Chrome Profile Directory")
+                    Text("Default Chrome Profile Directory")
                         .fontWeight(.bold)
                         .onAppear{
                             self.chromeProfileName = UserDefaults.standard.string(forKey: "ChromeProfile") ?? "Default"
@@ -125,7 +125,7 @@ struct GeneralSettingsView: View {
                     Button(action: {
                         self.showChromeProfileInfoPopover.toggle()
                     }) {
-                        Image(nsImage: NSImage(named: NSImage.revealFreestandingTemplateName)!)
+                        Image(systemName: "info.circle")
                     }
                     .buttonStyle(PlainButtonStyle())
                     .popover(isPresented: self.$showChromeProfileInfoPopover) {

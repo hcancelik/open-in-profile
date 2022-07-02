@@ -10,25 +10,27 @@ import SwiftUI
 
 struct VisitedUrlRowView: View {
     @ObservedObject var url: VisitedUrl
+    @ObservedObject var ruleManager: RuleManager
     
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
                 Text(self.url.url)
                     .truncationMode(.tail)
+                    .foregroundColor(.black)
                 Text("Visited at \(self.formatDate(date: self.url.visitDate))")
                     .font(.system(size: 10))
-                    .foregroundColor(Color.gray.opacity(0.8))
+                    .foregroundColor(.gray.opacity(0.8))
             }
             
             Spacer()
             
             Button(action: {
-                Helper.openLink(url: self.url.url)
+                Helper.openLink(url: self.url.url, rules: ruleManager.rules)
                 
                 self.closePopover()
             }) {
-                Image(nsImage: NSImage(named: NSImage.followLinkFreestandingTemplateName)!)
+                Image(systemName: "link")
             }
             .buttonStyle(BorderlessButtonStyle())
         }
@@ -58,6 +60,6 @@ struct VisitedUrlRowView_Previews: PreviewProvider {
         visitedUrl.url = "thisisaveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryveryverylongurl.com"
         visitedUrl.visitDate = Date()
         
-        return VisitedUrlRowView(url: visitedUrl)
+        return VisitedUrlRowView(url: visitedUrl, ruleManager: RuleManager())
     }
 }

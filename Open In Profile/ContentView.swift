@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
+    @EnvironmentObject var ruleManager: RuleManager
     
     @FetchRequest(entity: VisitedUrl.entity(),
                   sortDescriptors: [NSSortDescriptor.init(key: "visitDate", ascending: false)]) var recentUrls: FetchedResults<VisitedUrl>
@@ -42,11 +43,12 @@ struct ContentView: View {
                     ScrollView {
                         VStack() {
                             ForEach(self.recentUrls, id: \.id) { url in
-                                VisitedUrlRowView(url: url)
+                                VisitedUrlRowView(url: url, ruleManager: ruleManager)
                             }
                         }
                         .padding(.horizontal, 10)
                     }
+                    .foregroundColor(.black)
                 }
             }
             .alert(isPresented: self.$wantToQuitAlert) {
@@ -67,7 +69,7 @@ struct ContentView: View {
                     Button(action: {
                         self.openSettingMenu()
                     }) {
-                        Image(nsImage: NSImage(named: NSImage.smartBadgeTemplateName)!)
+                        Image(systemName: "gear")
                             .resizable()
                             .frame(width: 20, height: 20)
                     }
@@ -78,7 +80,7 @@ struct ContentView: View {
                     Button(action: {
                         let url = UserDefaults.standard.string(forKey: "OpenBlankUrl") ?? "https://www.google.com"
                         
-                        Helper.openLink(url: url)
+                        Helper.openLink(url: url, rules: ruleManager.rules)
                         
                         self.closePopover()
                     }) {
@@ -93,7 +95,7 @@ struct ContentView: View {
                     Button(action: {
                         self.wantToQuitAlert.toggle()
                     }) {
-                        Image(nsImage: NSImage(named: NSImage.stopProgressFreestandingTemplateName)!)
+                        Image(systemName: "power")
                             .resizable()
                             .frame(width: 18, height: 18)
                     }
@@ -119,7 +121,9 @@ struct ContentView: View {
         }
         .background(Color.white)
         .onAppear {
-            let settingsView = SettingsView().environment(\.managedObjectContext, self.moc)
+            let settingsView = SettingsView()
+                .environment(\.managedObjectContext, self.moc)
+                .environmentObject(ruleManager)
             
             self.window.center()
             self.window.setFrameAutosaveName("Settings")

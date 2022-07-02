@@ -10,20 +10,38 @@ import Cocoa
 import Foundation
 
 class Helper {
-    static func openLink(url: String) {
+    static func openLink(url: String, rules: [RuleViewModel]) {
         let commandPath = UserDefaults.standard.string(forKey: "ChromePath") ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-
-        let profileDirectory = UserDefaults.standard.string(forKey: "ChromeProfile") ?? "Default"
+        let defaultProfileDirectory = UserDefaults.standard.string(forKey: "ChromeProfile") ?? "Default"
+        var profileDirectory = defaultProfileDirectory
+        
+        for rule in rules {
+            if url.contains(rule.criteria) {
+                profileDirectory = rule.profile
+                
+                break
+            }
+        }
+        
+        if profileDirectory == "Safari" {
+            do {
+                let siteURL = URL(string: url)!
+                
+                let safariURL = try FileManager.default.url(for: .applicationDirectory, in: .localDomainMask, appropriateFor: nil, create: false).appendingPathComponent("Safari.app")
+                NSWorkspace.shared.open([siteURL], withApplicationAt: safariURL, configuration: .init()) { (runningApp, error) in
+                    print("running app", runningApp ?? "nil")
+                }
+                
+                return
+            } catch {
+                print(error)
+            }
+        }
+        
+        
         let directoryArg = "--profile-directory=\(profileDirectory)"
         let arguments = ["--args", directoryArg, url]
         
-//        let commandPath = "/usr/bin/open"
-//        let directoryArg = "--profile-directory=Profile 2"
-//        let arguments = ["-n", "-a", "Google Chrome", "--args", directoryArg, url]
-        
-//        let commandPath = "/bin/bash"
-//        let arguments = ["-c", "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome", "--args", "--profile-directory=Profile\\ 2", url]
-
         let processUrl = URL(fileURLWithPath: commandPath)
         try! Process.run(processUrl, arguments: arguments, terminationHandler: nil)
     }
@@ -98,7 +116,7 @@ class Helper {
     }
     
     static func goToWebPage(url: String = "https://hikmetcancelik.com/open-in-profile/") -> Void {
-        Helper.openLink(url: url)
+        Helper.openLink(url: url, rules: [])
     }
     
     static func resetAllUserDefaults() -> Void {

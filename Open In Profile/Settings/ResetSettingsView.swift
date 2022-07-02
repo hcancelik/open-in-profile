@@ -22,7 +22,7 @@ struct ResetSettingsView: View {
                 Button(action: {
                     self.showDeleteAlert.toggle()
                 }) {
-                    Text("Clear recent visited URLs")
+                    Label("Clear recent visited URLs", systemImage: "trash")
                         .padding(.horizontal, 10)
                         .padding(.vertical, 8)
                 }

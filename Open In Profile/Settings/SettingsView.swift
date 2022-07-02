@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var ruleManager: RuleManager
     @State var selectedTab: Int = 0
     
     var body: some View {
@@ -20,10 +21,8 @@ struct SettingsView: View {
             }
             .tag(0)
             
-            VStack {
-                Text("This feature is coming soon!")
-                    .padding(20)
-            }
+            RulesView(ruleManager: ruleManager)
+                .padding(5)
             .tabItem {
                 Text("Rules")
             }
@@ -49,6 +48,9 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
+        let ruleManager = RuleManager()
+        
         SettingsView()
+            .environmentObject(ruleManager)
     }
 }

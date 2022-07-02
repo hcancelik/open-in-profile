@@ -25,7 +25,7 @@ struct AboutView: View {
                 Button(action: {
                     Helper.goToWebPage()
                 }) {
-                    Text("There is a new version avilable!")
+                    Label("There is a new version avilable!", systemImage: "arrow.down.app")
                         .padding(.horizontal, 8)
                         .padding(.vertical, 10)
                 }
@@ -50,7 +50,7 @@ struct AboutView: View {
                 Button(action: {
                     Helper.goToWebPage()
                 }) {
-                    Image(nsImage: NSImage(named: NSImage.followLinkFreestandingTemplateName)!)
+                    Image(systemName: "arrow.up.right.circle.fill")
                 }
                 .buttonStyle(BorderlessButtonStyle())
             }
