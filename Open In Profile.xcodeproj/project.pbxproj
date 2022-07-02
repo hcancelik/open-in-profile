@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36140BB328703B0E00786623 /* create-dmg.sh in Resources */ = {isa = PBXBuildFile; fileRef = 36140BB028703A5A00786623 /* create-dmg.sh */; };
+		36140BB528705CE000786623 /* SelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36140BB428705CE000786623 /* SelectorView.swift */; };
+		36140BB7287063C300786623 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36140BB6287063C300786623 /* ProfileManager.swift */; };
+		36140BBA287065D000786623 /* Profile+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36140BB8287065D000786623 /* Profile+CoreDataClass.swift */; };
+		36140BBB287065D000786623 /* Profile+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36140BB9287065D000786623 /* Profile+CoreDataProperties.swift */; };
+		36140BBF287066FE00786623 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36140BBE287066FE00786623 /* ProfileViewModel.swift */; };
+		36140BC3287068A300786623 /* ProfilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36140BC2287068A300786623 /* ProfilesView.swift */; };
 		3640A401246B04E500251FEC /* HelperAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3640A400246B04E500251FEC /* HelperAppDelegate.swift */; };
 		3640A405246B04E700251FEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3640A404246B04E700251FEC /* Assets.xcassets */; };
 		3640A408246B04E700251FEC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3640A407246B04E700251FEC /* Preview Assets.xcassets */; };
@@ -49,6 +56,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		36140BB028703A5A00786623 /* create-dmg.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "create-dmg.sh"; sourceTree = "<group>"; };
+		36140BB428705CE000786623 /* SelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorView.swift; sourceTree = "<group>"; };
+		36140BB6287063C300786623 /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
+		36140BB8287065D000786623 /* Profile+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataClass.swift"; sourceTree = "<group>"; };
+		36140BB9287065D000786623 /* Profile+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profile+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		36140BBE287066FE00786623 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		36140BC2287068A300786623 /* ProfilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesView.swift; sourceTree = "<group>"; };
 		3640A3FE246B04E500251FEC /* Open In Profile Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Open In Profile Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3640A400246B04E500251FEC /* HelperAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperAppDelegate.swift; sourceTree = "<group>"; };
 		3640A404246B04E700251FEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -126,6 +140,7 @@
 			children = (
 				36932E4F24672B1E00B752F9 /* Open In Profile */,
 				3640A3FF246B04E500251FEC /* Open In Profile Helper */,
+				36140BB028703A5A00786623 /* create-dmg.sh */,
 				36932E4E24672B1E00B752F9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -146,6 +161,7 @@
 				36932E5224672B1E00B752F9 /* ContentView.swift */,
 				36932E762467FF2E00B752F9 /* VisitedUrlRowView.swift */,
 				36932E782467FF6500B752F9 /* NoLinksView.swift */,
+				36140BB428705CE000786623 /* SelectorView.swift */,
 				36932E7A2468000900B752F9 /* Helper.swift */,
 				36932E88246867F000B752F9 /* Models */,
 				36932E822468257C00B752F9 /* Settings */,
@@ -173,6 +189,7 @@
 			children = (
 				36932E742467FEE500B752F9 /* SettingsView.swift */,
 				36932E832468258B00B752F9 /* GeneralSettingsView.swift */,
+				36140BC2287068A300786623 /* ProfilesView.swift */,
 				36B252FF286B79E4001A22A2 /* RulesView.swift */,
 				36932E85246825F800B752F9 /* ResetSettingsView.swift */,
 				36D9418A246C24C800A213BB /* AboutView.swift */,
@@ -188,6 +205,8 @@
 				36932E7E2468013E00B752F9 /* VisitedUrl+CoreDataClass.swift */,
 				36B25305286CD8A6001A22A2 /* Rule+CoreDataProperties.swift */,
 				36B25304286CD8A6001A22A2 /* Rule+CoreDataClass.swift */,
+				36140BB9287065D000786623 /* Profile+CoreDataProperties.swift */,
+				36140BB8287065D000786623 /* Profile+CoreDataClass.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -196,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				36B25301286C282F001A22A2 /* RuleManager.swift */,
+				36140BB6287063C300786623 /* ProfileManager.swift */,
 				36B25308286CDA32001A22A2 /* CoreDataManager.swift */,
 			);
 			path = Managers;
@@ -205,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				36B2530B286DAEB4001A22A2 /* RuleViewModel.swift */,
+				36140BBE287066FE00786623 /* ProfileViewModel.swift */,
 			);
 			name = "View Models";
 			sourceTree = "<group>";
@@ -302,6 +323,7 @@
 				36932E5E24672B1F00B752F9 /* Main.storyboard in Resources */,
 				36932E5B24672B1F00B752F9 /* Preview Assets.xcassets in Resources */,
 				36932E5824672B1F00B752F9 /* Assets.xcassets in Resources */,
+				36140BB328703B0E00786623 /* create-dmg.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +344,9 @@
 			files = (
 				36B2530C286DAEB4001A22A2 /* RuleViewModel.swift in Sources */,
 				36932E812468013E00B752F9 /* VisitedUrl+CoreDataProperties.swift in Sources */,
+				36140BB528705CE000786623 /* SelectorView.swift in Sources */,
 				36932E5324672B1E00B752F9 /* ContentView.swift in Sources */,
+				36140BC3287068A300786623 /* ProfilesView.swift in Sources */,
 				36932E802468013E00B752F9 /* VisitedUrl+CoreDataClass.swift in Sources */,
 				36932E7B2468000900B752F9 /* Helper.swift in Sources */,
 				36B25309286CDA32001A22A2 /* CoreDataManager.swift in Sources */,
@@ -332,9 +356,13 @@
 				36932E752467FEE500B752F9 /* SettingsView.swift in Sources */,
 				36B25302286C282F001A22A2 /* RuleManager.swift in Sources */,
 				36932E5124672B1E00B752F9 /* AppDelegate.swift in Sources */,
+				36140BB7287063C300786623 /* ProfileManager.swift in Sources */,
 				36932E772467FF2E00B752F9 /* VisitedUrlRowView.swift in Sources */,
+				36140BBF287066FE00786623 /* ProfileViewModel.swift in Sources */,
 				36B25307286CD8A6001A22A2 /* Rule+CoreDataProperties.swift in Sources */,
+				36140BBA287065D000786623 /* Profile+CoreDataClass.swift in Sources */,
 				36932E5624672B1E00B752F9 /* Open_In_Profile.xcdatamodeld in Sources */,
+				36140BBB287065D000786623 /* Profile+CoreDataProperties.swift in Sources */,
 				36932E792467FF6500B752F9 /* NoLinksView.swift in Sources */,
 				36B25306286CD8A6001A22A2 /* Rule+CoreDataClass.swift in Sources */,
 				36B25300286B79E4001A22A2 /* RulesView.swift in Sources */,
@@ -547,7 +575,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hcancelik.Open-In-Profile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -573,7 +601,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hcancelik.Open-In-Profile";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

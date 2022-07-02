@@ -13,40 +13,27 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
     var popover: NSPopover!
+    var selectorPopover: NSPopover!
     var statusBarItem: NSStatusItem!
     private var ruleManager = RuleManager()
+    private var profileManager = ProfileManager()
     
     let persistentContainer = CoreDataManager.shared.persistentContainer
     
     func application(_ application: NSApplication, open urls: [URL]) {
-        let link = urls[0].absoluteString
+        let url = urls[0].absoluteString
         
-        Helper.openLink(url: link, rules: ruleManager.rules)
+        let selectProfile = UserDefaults.standard.bool(forKey: "selectProfile")
         
-        let context = persistentContainer.viewContext
-        
-        let visitedUrl = VisitedUrl(context: context)
-        visitedUrl.id = UUID()
-        visitedUrl.url = link
-        visitedUrl.visitDate = Date()
-        
-        try? context.save()
-        
-        do {
-            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "VisitedUrl")
-            fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "visitDate", ascending: true)]
+        if selectProfile {
+            profileManager.selectedURL = url
             
-            let results = try context.fetch(fetchRequest)
+            self.openSelectorPopup(self)
+        } else {
+            Helper.openLink(url: url, rules: ruleManager.rules)
             
-            if results.count > 10 {
-                let item = results[0] as! NSManagedObject
-                
-                context.delete(item)
-            }
-        } catch {
-            print("Error deleting records")
+            profileManager.saveLastVisit(url: url)
         }
-        
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -55,6 +42,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let contentView = ContentView()
             .environment(\.managedObjectContext, persistentContainer.viewContext)
             .environmentObject(ruleManager)
+            .environmentObject(profileManager)
 
         let popover = NSPopover()
         popover.contentSize = NSSize(width: 400, height: 500)
@@ -69,19 +57,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.action = #selector(togglePopover(_:))
         }
         
+        let selectorView = SelectorView()
+            .environmentObject(profileManager)
+        
+        let selectorPopover = NSPopover()
+        selectorPopover.contentSize = NSSize(width: 450, height: 400)
+        selectorPopover.behavior = .semitransient
+        selectorPopover.contentViewController = NSHostingController(rootView: selectorView)
+        self.selectorPopover = selectorPopover
+        
         Helper.setAsDefaultBrowser()
         
         let _ = Helper.checkIfUpdateAvailable()
-    }
-        
-    func closePopover(_ sender: AnyObject?) {
-        self.popover.performClose(sender)
     }
     
     @objc func togglePopover(_ sender: AnyObject?) {
         if let button = self.statusBarItem.button {
             if self.popover.isShown {
-                self.popover.performClose(sender)
+                self.closePopover(sender)
             } else {
                 self.popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
                 
@@ -91,6 +84,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
     }
+    
+    @objc func openSelectorPopup(_ send: AnyObject) {
+        if let button = self.statusBarItem.button {
+            self.selectorPopover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            
+            NSApp.activate(ignoringOtherApps: true)
+            
+            self.selectorPopover.contentViewController?.view.window?.becomeKey()
+        }
+    }
+    
+    func closePopover(_ sender: AnyObject?) {
+        self.popover.performClose(sender)
+    }
+    
+    func closeSelectorPopover(_ sender: AnyObject?) {
+        self.selectorPopover.performClose(sender)
+    }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
@@ -98,6 +109,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillResignActive(_ notification: Notification) {
         self.closePopover(self)
+        self.closeSelectorPopover(self)
     }
 }
 

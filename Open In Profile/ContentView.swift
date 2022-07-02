@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @EnvironmentObject var ruleManager: RuleManager
+    @EnvironmentObject var profileManager: ProfileManager
     
     @FetchRequest(entity: VisitedUrl.entity(),
                   sortDescriptors: [NSSortDescriptor.init(key: "visitDate", ascending: false)]) var recentUrls: FetchedResults<VisitedUrl>
@@ -124,6 +125,7 @@ struct ContentView: View {
             let settingsView = SettingsView()
                 .environment(\.managedObjectContext, self.moc)
                 .environmentObject(ruleManager)
+                .environmentObject(profileManager)
             
             self.window.center()
             self.window.setFrameAutosaveName("Settings")

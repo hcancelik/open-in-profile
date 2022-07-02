@@ -10,9 +10,9 @@ import Cocoa
 import Foundation
 
 class Helper {
-    static func openLink(url: String, rules: [RuleViewModel]) {
+    static func openLink(url: String, rules: [RuleViewModel], profile: String? = nil) {
         let commandPath = UserDefaults.standard.string(forKey: "ChromePath") ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-        let defaultProfileDirectory = UserDefaults.standard.string(forKey: "ChromeProfile") ?? "Default"
+        let defaultProfileDirectory = profile ?? UserDefaults.standard.string(forKey: "ChromeProfile") ?? "Default"
         var profileDirectory = defaultProfileDirectory
         
         for rule in rules {
@@ -45,7 +45,6 @@ class Helper {
         let processUrl = URL(fileURLWithPath: commandPath)
         try! Process.run(processUrl, arguments: arguments, terminationHandler: nil)
     }
-    
     
     static func setAsDefaultBrowser() {
         let bundleId = Helper.getBundleId()

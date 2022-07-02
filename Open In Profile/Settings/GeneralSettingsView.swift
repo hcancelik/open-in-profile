@@ -10,6 +10,7 @@ import SwiftUI
 import ServiceManagement
 
 struct GeneralSettingsView: View {
+    @ObservedObject var profileManager: ProfileManager
     let helperBundleName = "com.hcancelik.Open-In-Profile-Helper"
     
     @State private var startOnStartUp: Bool = true
@@ -20,10 +21,11 @@ struct GeneralSettingsView: View {
     
     @State private var chromeProfileName: String = ""
     @State private var showChromeProfileSheet: Bool = false
-    @State private var showChromeProfileInfoPopover: Bool = false
     
     @State private var openBlankUrl: String = ""
     @State private var openBlankUrlSheet: Bool = false
+    
+    @AppStorage("selectProfile") private var selectProfile = false
     
     var body: some View {
         let launchAtStart = Binding<Bool>(
@@ -60,7 +62,7 @@ struct GeneralSettingsView: View {
                                 .padding(.bottom, 20)
                             
                         }
-                        .padding(20)
+                        .padding(15)
                     }
                     
                     Button(action: {
@@ -98,7 +100,7 @@ struct GeneralSettingsView: View {
                                 }
                             }
                         }
-                        .padding(20)
+                        .padding(15)
                         .frame(width: 400)
                     }
                     Spacer()
@@ -112,7 +114,7 @@ struct GeneralSettingsView: View {
                     Spacer()
                 }
             }
-            .padding(.bottom, 20)
+            .padding(.bottom, 15)
             
             VStack {
                 HStack(alignment: .top) {
@@ -121,48 +123,7 @@ struct GeneralSettingsView: View {
                         .onAppear{
                             self.chromeProfileName = UserDefaults.standard.string(forKey: "ChromeProfile") ?? "Default"
                     }
-                    
-                    Button(action: {
-                        self.showChromeProfileInfoPopover.toggle()
-                    }) {
-                        Image(systemName: "info.circle")
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    .popover(isPresented: self.$showChromeProfileInfoPopover) {
-                        VStack {
-                            Text("Where Can I Find My Chrome Profile Directory Name?")
-                                .fontWeight(.black)
-                                .padding(.bottom, 20)
-                            
-                            VStack(alignment: .leading, spacing: 5) {
-                                Text("To determine the profile directory for a running Chrome instance:")
-                                    .padding(.bottom, 10)
-                                
-                                Text("1. Navigate to chrome://version")
-                                Text("2. Look for the Profile Path field. This gives the path to full profile directory.")
-                                Text("3. The profile directory name is the last directory of the profile directory.")
-                                    .padding(.bottom, 10)
-                                
-                                HStack(spacing: 0) {
-                                    Text("For example profile directory name for the below path is ")
-                                        .padding(0)
-                                    Text("Default")
-                                        .fontWeight(.black)
-                                    Spacer()
-                                }
-                                .padding(.bottom, 20)
-                                
-                                HStack(spacing: 0) {
-                                    Text("/Users/apple/Library/Application Support/Google/Chrome/")
-                                        .padding(0)
-                                    Text("Default")
-                                        .fontWeight(.black)
-                                }
-                            }
-                        }
-                        .padding(20)
-                    }
-                    
+                                        
                     Button(action: {
                         self.showChromeProfileSheet.toggle()
                     }){
@@ -173,9 +134,15 @@ struct GeneralSettingsView: View {
                         VStack {
                             Text("Please provide a profile directory name")
                             
-                            TextField("Chrome Profile Directory", text: self.$chromeProfileName, onEditingChanged: { _ in
-                                self.updateUserDefault(key: "ChromeProfile", value: self.chromeProfileName)
-                            })
+                            Picker("Chrome Profile Directory", selection: self.$chromeProfileName) {
+                                ForEach(profileManager.profiles) { profile in
+                                    Text("\(profile.directory) (\(profile.label))")
+                                        .tag(profile.directory)
+                                }
+                            }
+                            .onChange(of: chromeProfileName) { newValue in
+                                self.updateUserDefault(key: "ChromeProfile", value: newValue)
+                            }
                             
                             Spacer().padding(.bottom, 20)
                             
@@ -213,7 +180,7 @@ struct GeneralSettingsView: View {
                     Spacer()
                 }
             }
-            .padding(.bottom, 20)
+            .padding(.bottom, 15)
             
             VStack {
                 HStack(alignment: .top) {
@@ -265,7 +232,16 @@ struct GeneralSettingsView: View {
                     Spacer()
                 }
             }
-            .padding(.bottom, 20)
+            .padding(.bottom, 15)
+            
+            HStack {
+                Toggle(isOn: $selectProfile) {
+                    Text("Show profile selector before opening links")
+                }
+                
+                Spacer()
+            }
+            .padding(.bottom, 10)
             
             HStack {
                 Toggle(isOn: launchAtStart) {
@@ -280,7 +256,7 @@ struct GeneralSettingsView: View {
                 }
                 Spacer()
             }
-            .padding(.bottom, 20)
+            .padding(.bottom, 15)
             
             Spacer()
             
@@ -305,6 +281,6 @@ struct GeneralSettingsView: View {
 
 struct GeneralSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        GeneralSettingsView()
+        GeneralSettingsView(profileManager: ProfileManager())
     }
 }

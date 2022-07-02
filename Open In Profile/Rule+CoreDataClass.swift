@@ -32,6 +32,16 @@ public class Rule: NSManagedObject {
         viewContext.object(with: id) as? Rule
     }
     
+    static func byProfile(profile: String) -> [Rule]? {
+        let request: NSFetchRequest<Rule> = Rule.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "profile = %@", profile)
+        
+        let rules = try? viewContext.fetch(request)
+        
+        return rules
+    }
+    
     func save() throws {
         try Self.viewContext.save()
     }

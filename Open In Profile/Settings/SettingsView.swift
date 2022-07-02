@@ -10,35 +10,40 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var ruleManager: RuleManager
+    @EnvironmentObject var profileManager: ProfileManager
     @State var selectedTab: Int = 0
     
     var body: some View {
         TabView(selection: self.$selectedTab) {
-            GeneralSettingsView()
+            GeneralSettingsView(profileManager: profileManager)
             .tabItem {
                 Text("General")
-                    .font(.headline)
             }
             .tag(0)
             
-            RulesView(ruleManager: ruleManager)
-                .padding(5)
+            ProfilesView(profileManager: profileManager)
+            .tabItem {
+                Text("Profiles")
+            }
+            .tag(1)
+            
+            RulesView(ruleManager: ruleManager, profileManager: profileManager)
             .tabItem {
                 Text("Rules")
             }
-            .tag(1)
+            .tag(2)
             
             ResetSettingsView()
             .tabItem {
                 Text("Reset")
             }
-            .tag(2)
+            .tag(3)
             
             AboutView()
             .tabItem {
                 Text("About")
             }
-            .tag(3)
+            .tag(4)
             
         }
         .padding(20)

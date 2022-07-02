@@ -46,8 +46,6 @@ class RuleManager: NSObject, ObservableObject {
                 if let rule = rules.first(where: { $0.id == id }) {
                     return rule
                 }
-                
-                return RuleViewModel(rule: newRule())
             }
             
             return RuleViewModel(rule: newRule())
